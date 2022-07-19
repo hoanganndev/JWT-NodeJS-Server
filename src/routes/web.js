@@ -9,7 +9,6 @@ import {
 } from "../controller/homeController";
 const router = express.Router();
 /**
- *
  * @param {*} app --express app
  */
 const initWebRoutes = app => {

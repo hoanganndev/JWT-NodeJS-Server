@@ -1,5 +1,5 @@
 import db from "../models/index";
-import { hashUserPassword } from "./checkService";
+import { hashUserPassword } from "./inspectionService";
 
 const createNewUser = async (email, password, username) => {
     let hashPass = hashUserPassword(password);
