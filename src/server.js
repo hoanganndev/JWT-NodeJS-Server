@@ -6,24 +6,28 @@ import configCors from "./config/CORS";
 import configViewEngine from "./config/viewEngine";
 import initApiRoutes from "./routes/api";
 import initWebRoutes from "./routes/web";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = process.env.PORT ? process.env.PORT : 8080;
 
-//Config Cors
+// Config Cors
 configCors(app);
 
-//Config view engine
+// Config view engine
 configViewEngine(app);
 
-//Config body parser
+// Config body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Is connect database
+// Config cookies parser
+app.use(cookieParser());
+
+// Is connect database
 connection();
 
-//Init routes
+// Init routes
 initWebRoutes(app);
 initApiRoutes(app);
 

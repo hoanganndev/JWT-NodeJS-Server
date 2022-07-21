@@ -7,6 +7,8 @@ import {
     checkPhoneExist,
     hashUserPassword,
 } from "./inspectionService";
+import { getGroupWithRoles } from "./rolesOfGroupService";
+import { createJWT } from "../middleware/JWTAction";
 
 const registerNewUser = async rawUserData => {
     try {
@@ -67,10 +69,23 @@ const handleUserLogin = async rawUserData => {
                 user.password
             );
             if (isCorrectPassword) {
+                // Create token send to client
+                let groupWithRoles = await getGroupWithRoles(user);
+                let payload = {
+                    email: user.email,
+                    username: user.username,
+                    groupWithRoles,
+                };
+                let token = createJWT(payload);
                 return {
                     errorMessage: "Login sucess !",
                     errorCode: 0,
-                    data: {},
+                    data: {
+                        access_token: token,
+                        groupWithRoles,
+                        email: user.email,
+                        username: user.username,
+                    },
                 };
             }
         }
