@@ -3,7 +3,7 @@ import {
     checkEmailExist,
     checkPhoneExist,
     checkValidateEmail,
-    hasUserPassword,
+    hashUserPassword,
 } from "./inspectionService";
 
 const getAllUsers = async () => {
@@ -110,7 +110,7 @@ const createNewUser = async data => {
             };
         }
         // Hash user password
-        let hashPassword = hasUserPassword(data.password);
+        let hashPassword = hashUserPassword(data.password);
         await db.User.create({ ...data, password: hashPassword });
         return {
             errorMessage: "Create user success !",

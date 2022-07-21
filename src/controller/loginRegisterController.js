@@ -43,6 +43,13 @@ const handleRegister = async (req, res) => {
 const handleLogin = async (req, res) => {
     try {
         let dataService = await handleUserLogin(req.body);
+        // Set cookies
+        if (dataService && dataService.data.access_token) {
+            res.cookie("jwt", dataService.data.access_token, {
+                httpOnly: true,
+                maxAge: 60 * 60 * 1000, // Expire : 1h
+            });
+        }
         return res.status(200).json({
             errorMessage: dataService.errorMessage,
             errorCode: dataService.errorCode,
