@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import connection from "./config/connectDB";
 import configCors from "./config/CORS";
-import configViewEngine from "./configs/viewEngine";
+import configViewEngine from "./config/viewEngine";
 import initApiRoutes from "./routes/api";
 import initWebRoutes from "./routes/web";
 

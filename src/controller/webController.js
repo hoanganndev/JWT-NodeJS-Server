@@ -1,10 +1,10 @@
 import {
     createNewUser,
-    getListUsers,
     deleteUser,
+    getListUsers,
     getUserById,
     updateUserInfor,
-} from "../service/userService";
+} from "../service/webUserService";
 
 const handleGetHomePage = (req, res) => {
     return res.render("home.ejs");

@@ -6,11 +6,14 @@ import {
     handleUserPage,
     handleGetHomePage,
     handleDelteUser,
-} from "../controller/homeController";
+} from "../controller/webController";
+
 const router = express.Router();
+
 /**
  * @param {*} app --express app
  */
+
 const initWebRoutes = app => {
     router.get("/", handleGetHomePage);
     router.get("/user", handleUserPage);
