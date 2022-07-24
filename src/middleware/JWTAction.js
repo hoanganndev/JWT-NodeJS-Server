@@ -23,10 +23,6 @@ const verifyToken = token => {
         decoded = jwt.verify(token, secretKey);
     } catch (err) {
         console.log("🔴>>> Verify jwt from server error !", err);
-        // Catch error TokenExpiredError
-        if (err instanceof jwt.TokenExpiredError) {
-            return (decoded = "TokenExpiredError");
-        }
     }
     return decoded;
 };

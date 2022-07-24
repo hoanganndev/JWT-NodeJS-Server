@@ -102,9 +102,36 @@ const deleteUserFunction = async (req, res) => {
     }
 };
 
+const getUserAccountFunction = async (req, res) => {
+    try {
+        let access_token = req.token; // token,user return from checkUserJWT
+        let { groupWithRoles, email, username } = req.user;
+        return res.status(200).json({
+            errorMessage: "Get user account sucess !",
+            errorCode: 0,
+            data: {
+                access_token,
+                groupWithRoles,
+                email,
+                username,
+            },
+        });
+    } catch (error) {
+        console.log(
+            "🔴>>> Error from userController at deleteFunction :",
+            error
+        );
+        return res.status(500).json({
+            errorMessage: "Error from server",
+            errorCode: -1,
+            data: "",
+        });
+    }
+};
 module.exports = {
     readUsersFunction,
     createUserFunction,
     updateUserFunction,
     deleteUserFunction,
+    getUserAccountFunction,
 };
