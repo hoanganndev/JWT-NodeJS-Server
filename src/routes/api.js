@@ -23,6 +23,8 @@ const initApiRoutes = app => {
     router.put("/user/update", userController.updateUserFunction);
     router.delete("/user/delete", userController.deleteUserFunction);
 
+    // Router get current account user
+    router.get("/account", userController.getUserAccountFunction);
     // Router get groups
     router.get("/group/read", groupController.readGroupsFunction);
 
