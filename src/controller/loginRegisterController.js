@@ -65,7 +65,25 @@ const handleLogin = async (req, res) => {
     }
 };
 
+const handleLogout = (req, res) => {
+    try {
+        res.clearCookie("jwt");
+        return res.status(200).json({
+            errorMessage: "Successful logout !",
+            errorCode: 0,
+            data: "",
+        });
+    } catch (error) {
+        console.log("🔴>>> Error from apiController at handleLogout:", error);
+        return res.status(500).json({
+            errorMessage: "Logout failed",
+            errorCode: -1,
+            data: "",
+        });
+    }
+};
 module.exports = {
     handleRegister,
     handleLogin,
+    handleLogout,
 };
